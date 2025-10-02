@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="background-music" loop autoplay>
+        <!-- User will provide the source -->
+        <!-- Example: <source src="music/your-song.mp3" type="audio/mpeg"> -->
+    </audio>
+
+    <div class="container">
+        <header>
+            <h1 class="neon-text">Happy Birthday!</h1>
+        </header>
+
+        <section id="wishes">
+            <p class="wish-text"></p>
+        </section>
+
+        <section id="gallery">
+            <h2>Party Moments</h2>
+            <div class="image-grid">
+                <!-- Images will be added here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <a id="lightbox-download" class="lightbox-download-btn" download>⬇ Download Image</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
