@@ -112,31 +112,32 @@ body::before {
     font-weight: 900;
     background: linear-gradient(45deg,
         #ff6b6b 0%,
-        #4ecdc4 25%,
-        #45b7d1 50%,
-        #96ceb4 75%,
-        #feca57 100%);
+        #4ecdc4 20%,
+        #45b7d1 40%,
+        #96ceb4 60%,
+        #feca57 80%,
+        #ff6b6b 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    background-size: 300% 300%;
-    animation: rainbow 3s ease-in-out infinite;
+    background-size: 400% 400%;
+    animation: elegant-rainbow 4s ease-in-out infinite, text-float 3s ease-in-out infinite;
     text-shadow:
-        0 0 10px rgba(255, 107, 107, 1),
-        0 0 20px rgba(78, 205, 196, 1),
-        0 0 30px rgba(69, 183, 209, 1),
-        0 0 40px rgba(150, 206, 180, 1),
-        0 0 50px rgba(254, 202, 87, 1),
-        0 0 60px rgba(255, 107, 107, 0.8),
-        0 0 80px rgba(78, 205, 196, 0.6),
-        0 0 100px rgba(69, 183, 209, 0.4);
+        0 0 5px rgba(255, 107, 107, 0.8),
+        0 0 10px rgba(78, 205, 196, 0.6),
+        0 0 15px rgba(69, 183, 209, 0.5),
+        0 0 20px rgba(150, 206, 180, 0.4),
+        0 0 25px rgba(254, 202, 87, 0.6),
+        0 0 35px rgba(255, 107, 107, 0.3);
     letter-spacing: 3px;
     margin-bottom: 20px;
     filter:
-        drop-shadow(0 0 20px rgba(255, 107, 107, 0.8))
-        drop-shadow(0 0 40px rgba(78, 205, 196, 0.6))
-        drop-shadow(0 0 60px rgba(69, 183, 209, 0.4));
+        drop-shadow(0 0 10px rgba(255, 107, 107, 0.6))
+        drop-shadow(0 0 20px rgba(78, 205, 196, 0.4))
+        drop-shadow(0 0 30px rgba(69, 183, 209, 0.3));
     position: relative;
+    text-transform: uppercase;
+    transform-origin: center;
 }
 
 .neon-text::before {
@@ -147,33 +148,60 @@ body::before {
     width: 100%;
     height: 100%;
     background: linear-gradient(45deg,
-        rgba(255, 107, 107, 0.3) 0%,
-        rgba(78, 205, 196, 0.3) 25%,
-        rgba(69, 183, 209, 0.3) 50%,
-        rgba(150, 206, 180, 0.3) 75%,
-        rgba(254, 202, 87, 0.3) 100%);
+        rgba(255, 107, 107, 0.4) 0%,
+        rgba(78, 205, 196, 0.3) 20%,
+        rgba(69, 183, 209, 0.25) 40%,
+        rgba(150, 206, 180, 0.2) 60%,
+        rgba(254, 202, 87, 0.3) 80%,
+        rgba(255, 107, 107, 0.4) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    background-size: 300% 300%;
-    animation: rainbow 3s ease-in-out infinite;
+    background-size: 400% 400%;
+    animation: elegant-rainbow 4s ease-in-out infinite, pulse-glow 2s ease-in-out infinite alternate;
     text-shadow:
-        0 0 5px rgba(255, 107, 107, 0.5),
-        0 0 10px rgba(78, 205, 196, 0.5),
-        0 0 15px rgba(69, 183, 209, 0.5),
-        0 0 20px rgba(150, 206, 180, 0.5),
-        0 0 25px rgba(254, 202, 87, 0.5);
-    filter: blur(2px);
+        0 0 10px rgba(255, 107, 107, 0.4),
+        0 0 20px rgba(78, 205, 196, 0.3),
+        0 0 30px rgba(69, 183, 209, 0.2),
+        0 0 40px rgba(150, 206, 180, 0.2),
+        0 0 50px rgba(254, 202, 87, 0.3);
+    filter: blur(1px);
     z-index: -1;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
-@keyframes rainbow {
+@keyframes elegant-rainbow {
     0%, 100% {
         background-position: 0% 50%;
     }
-    50% {
+    25% {
         background-position: 100% 50%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    75% {
+        background-position: 0% 100%;
+    }
+}
+
+@keyframes pulse-glow {
+    0% {
+        filter: blur(1px) brightness(1);
+        opacity: 0.8;
+    }
+    100% {
+        filter: blur(0.5px) brightness(1.2);
+        opacity: 1;
+    }
+}
+
+@keyframes text-float {
+    0%, 100% {
+        transform: translateY(0px) rotateX(0deg);
+    }
+    50% {
+        transform: translateY(-2px) rotateX(2deg);
     }
 }
 
