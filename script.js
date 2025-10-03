@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // YouTube Video ID for "Ordinary" by Alex Warren
     // Replace this with the actual video ID when you find the official audio
-    const videoId = 'YOUR_ORDINAY_ALEX_WARREN_VIDEO_ID';
+    const videoId = 'https://www.youtube.com/watch?v=u2ah9tWTkmk&list=RDu2ah9tWTkmk&start_radio=1';
 
     // Alternative approach - using a known audio streaming method
     // You can also use: https://www.youtube.com/watch?v=VIDEO_ID for direct audio
 
     // For now, using a placeholder that you can replace
-    const audioUrl = 'https://www.youtube.com/watch?v=YOUR_ORDINAY_ALEX_WARREN_VIDEO_ID';
+    const audioUrl = 'https://www.youtube.com/watch?v=u2ah9tWTkmk&list=RDu2ah9tWTkmk&start_radio=1';
 
     // Create YouTube embed URL with autoplay (audio only)
     const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&controls=0&disablekb=1&modestbranding=1&rel=0&loop=1&playlist=${videoId}&start=0`;
