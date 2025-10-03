@@ -64,10 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Image Gallery --- //
     const imageGrid = document.querySelector('.image-grid');
-    const images = [
-        // Add your image paths here
-        // e.g., { path: 'images/photo1.jpg' },
-    ];
+    // Gallery images are already in HTML - no need for JavaScript array
 
     // Lightbox elements
     const lightbox = document.getElementById('lightbox');
@@ -104,56 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function populateGallery() {
-        if (images.length === 0) {
-            // Add placeholder content if no images are provided
-            for (let i = 1; i <= 6; i++) {
-                const placeholder = document.createElement('div');
-                placeholder.className = 'image-item placeholder';
-                const placeholderImg = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect width='400' height='250' fill='%23667eea' opacity='0.4'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dy='.3em'%3E🎂 Photo ${i}%3C/text%3E%3C/svg%3E`;
-                placeholder.innerHTML = `
-                    <img src="${placeholderImg}" alt="Placeholder ${i}" style="cursor: pointer;">
-                    <a href="${placeholderImg}" download="photo${i}.svg" class="download-btn">⬇ Download</a>
-                `;
-                
-                const img = placeholder.querySelector('img');
-                img.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    openLightbox(placeholderImg);
-                });
-                
-                imageGrid.appendChild(placeholder);
-            }
-        } else {
-            images.forEach(image => {
-                const item = document.createElement('div');
-                item.className = 'image-item';
-
-                const img = document.createElement('img');
-                img.src = image.path;
-                img.alt = 'Birthday Party Image';
-                img.loading = 'lazy';
-                img.style.cursor = 'pointer';
-
-                // Open lightbox on image click
-                img.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    openLightbox(image.path);
-                });
-
-                const downloadLink = document.createElement('a');
-                downloadLink.href = image.path;
-                downloadLink.download = image.path.split('/').pop();
-                downloadLink.className = 'download-btn';
-                downloadLink.textContent = '⬇ Download';
-                downloadLink.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevent opening lightbox when downloading
-                });
-
-                item.appendChild(img);
-                item.appendChild(downloadLink);
-                imageGrid.appendChild(item);
-            });
-        }
+        // Gallery is already populated in HTML - no need to add placeholders
+        // If you want to use JavaScript for dynamic image loading, add image paths to the images array above
+        console.log('Gallery already populated in HTML');
     }
 
     populateGallery();
