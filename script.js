@@ -4,41 +4,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const youtubePlayer = document.getElementById('youtube-player');
     let playButton = null;
 
-    // YouTube Video ID - Replace with your chosen song's video ID
-    const videoId = 'dQw4w9WgXcQ'; // Default Rick Roll as placeholder
+    // YouTube Video ID for "Ordinary" by Alex Warren
+    // Replace this with the actual video ID when you find the official audio
+    const videoId = 'YOUR_ORDINAY_ALEX_WARREN_VIDEO_ID';
 
-    // Create YouTube embed URL with autoplay
-    const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&controls=0&disablekb=1&modestbranding=1&rel=0&start=0&end=180&loop=1&playlist=${videoId}`;
+    // Alternative approach - using a known audio streaming method
+    // You can also use: https://www.youtube.com/watch?v=VIDEO_ID for direct audio
+
+    // For now, using a placeholder that you can replace
+    const audioUrl = 'https://www.youtube.com/watch?v=YOUR_ORDINAY_ALEX_WARREN_VIDEO_ID';
+
+    // Create YouTube embed URL with autoplay (audio only)
+    const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&controls=0&disablekb=1&modestbranding=1&rel=0&loop=1&playlist=${videoId}&start=0`;
 
     youtubePlayer.src = embedUrl;
 
     // Show play button if autoplay doesn't work
     setTimeout(() => {
-        if (youtubePlayer && youtubePlayer.contentWindow) {
-            console.log('YouTube audio loaded successfully');
-        } else {
-            console.log('YouTube autoplay may be blocked. Click to enable audio.');
-            // Create a play button as fallback
-            playButton = document.createElement('button');
-            playButton.className = 'play-music-btn';
-            playButton.innerHTML = '🎵 Enable Audio';
-            playButton.onclick = () => {
-                youtubePlayer.src = embedUrl;
-                playButton.classList.add('hidden');
-            };
-            document.body.appendChild(playButton);
-        }
-    }, 2000);
-
-    // Click handler for manual play
-    document.addEventListener('click', () => {
-        if (youtubePlayer && !youtubePlayer.src.includes('autoplay=1')) {
-            youtubePlayer.src = embedUrl;
-            if (playButton) {
-                playButton.classList.add('hidden');
-            }
-        }
-    }, { once: true });
+        console.log('YouTube audio player loaded');
+        console.log('To use "Ordinary" by Alex Warren:');
+        console.log('1. Find the official video on YouTube');
+        console.log('2. Copy the video ID from the URL');
+        console.log('3. Replace YOUR_ORDINAY_ALEX_WARREN_VIDEO_ID in script.js');
+    }, 1000);
 
     // --- Birthday Wishes --- //
     const wishes = [
@@ -64,19 +52,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial wish
     wishElement.textContent = wishes[wishIndex];
-    wishElement.classList.add('fade-in');
-
     setInterval(changeWish, 3000); // Change wish every 3 seconds
 
     // --- Image Gallery --- //
     const imageGrid = document.querySelector('.image-grid');
-    // Gallery images are already in HTML - no need for JavaScript array
+    populateGallery();
 
     // Lightbox elements
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxDownload = document.getElementById('lightbox-download');
-    const lightboxClose = document.querySelector('.lightbox-close');
 
     function openLightbox(imageSrc) {
         lightbox.classList.add('active');
