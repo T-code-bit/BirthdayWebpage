@@ -1,36 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Background Music --- //
-    const music = document.getElementById('background-music');
+    // --- YouTube Audio Player --- //
+    const youtubeContainer = document.getElementById('youtube-audio');
+    const youtubePlayer = document.getElementById('youtube-player');
     let playButton = null;
-    
-    // Try to autoplay music
-    const playPromise = music.play();
-    
-    if (playPromise !== undefined) {
-        playPromise.then(() => {
-            console.log('Audio is playing automatically');
-        }).catch(error => {
-            console.log('Autoplay prevented. Showing play button.');
-            // Create a play button if autoplay fails
+
+    // YouTube Video ID - Replace with your chosen song's video ID
+    const videoId = 'dQw4w9WgXcQ'; // Default Rick Roll as placeholder
+
+    // Create YouTube embed URL with autoplay
+    const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&controls=0&disablekb=1&modestbranding=1&rel=0&start=0&end=180&loop=1&playlist=${videoId}`;
+
+    youtubePlayer.src = embedUrl;
+
+    // Show play button if autoplay doesn't work
+    setTimeout(() => {
+        if (youtubePlayer && youtubePlayer.contentWindow) {
+            console.log('YouTube audio loaded successfully');
+        } else {
+            console.log('YouTube autoplay may be blocked. Click to enable audio.');
+            // Create a play button as fallback
             playButton = document.createElement('button');
             playButton.className = 'play-music-btn';
-            playButton.innerHTML = '🎵 Play Music';
+            playButton.innerHTML = '🎵 Enable Audio';
             playButton.onclick = () => {
-                music.play();
+                youtubePlayer.src = embedUrl;
                 playButton.classList.add('hidden');
             };
             document.body.appendChild(playButton);
-        });
-    }
-    
-    // Also try to play on any user interaction
+        }
+    }, 2000);
+
+    // Click handler for manual play
     document.addEventListener('click', () => {
-        if (music.paused) {
-            music.play().then(() => {
-                if (playButton) {
-                    playButton.classList.add('hidden');
-                }
-            }).catch(err => console.log('Play failed:', err));
+        if (youtubePlayer && !youtubePlayer.src.includes('autoplay=1')) {
+            youtubePlayer.src = embedUrl;
+            if (playButton) {
+                playButton.classList.add('hidden');
+            }
         }
     }, { once: true });
 

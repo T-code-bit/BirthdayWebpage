@@ -29,10 +29,17 @@
         <div class="particle" style="left: 95%; animation-delay: -34s;"></div>
     </div>
 
-    <audio id="background-music" loop autoplay>
-        <!-- Audio will be added when music file is provided -->
-        <!-- <source src="music/ordinary-alex-warren.mp3" type="audio/mpeg"> -->
-        <!-- <source src="music/ordinary-alex-warren.ogg" type="audio/ogg"> -->
+    <!-- YouTube Audio Player -->
+    <div id="youtube-audio" style="display: none;">
+        <iframe id="youtube-player" width="0" height="0" frameborder="0" allowfullscreen
+                allow="autoplay; encrypted-media">
+        </iframe>
+    </div>
+
+    <!-- Fallback Audio Element (hidden) -->
+    <audio id="background-music" loop style="display: none;">
+        <!-- Placeholder for when you have the actual audio file -->
+        <!-- <source src="music/birthday-song.mp3" type="audio/mpeg"> -->
     </audio>
 
     <div class="container">
