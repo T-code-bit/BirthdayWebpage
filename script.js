@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // YouTube Video ID for "Ordinary" by Alex Warren
     // Replace this with the actual video ID when you find the official audio
-    const videoId = 'hTWKbfoikeg'; // Using a working example for now
+    const videoId = 'u2ah9tWTkmk'; // Using a working example for now
 
     // When you find the actual "Ordinary" by Alex Warren video ID, replace above
 
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // You can also use: https://www.youtube.com/watch?v=VIDEO_ID for direct audio
 
     // For now, using a placeholder that you can replace
-    const audioUrl = 'https://www.youtube.com/watch?v=hTWKbfoikeg';
+    const audioUrl = 'https://www.youtube.com/watch?v=u2ah9tWTkmk';
 
     // Create YouTube embed URL with autoplay (audio only)
     const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&controls=0&disablekb=1&modestbranding=1&rel=0&loop=1&playlist=${videoId}&start=0`;
