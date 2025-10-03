@@ -48,6 +48,71 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { once: true });
 
+    // --- Birthday Countdown Timer --- //
+    function startBirthdayCountdown() {
+        const hoursElement = document.getElementById('hours');
+        const minutesElement = document.getElementById('minutes');
+        const secondsElement = document.getElementById('seconds');
+        const statusElement = document.getElementById('countdown-status');
+
+        function updateCountdown() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+
+            // Set birthday to today at 12:00 AM (midnight)
+            let birthday = new Date(currentYear, now.getMonth(), now.getDate(), 0, 0, 0);
+
+            // If it's already past midnight today, set to tomorrow
+            if (now.getTime() > birthday.getTime()) {
+                birthday.setDate(birthday.getDate() + 1);
+            }
+
+            const timeRemaining = birthday.getTime() - now.getTime();
+
+            if (timeRemaining <= 0) {
+                // Birthday has started!
+                const elapsed = Math.abs(timeRemaining);
+                const elapsedHours = Math.floor(elapsed / (1000 * 60 * 60));
+                const elapsedMinutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+                const elapsedSeconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+
+                hoursElement.textContent = elapsedHours.toString().padStart(2, '0');
+                minutesElement.textContent = elapsedMinutes.toString().padStart(2, '0');
+                secondsElement.textContent = elapsedSeconds.toString().padStart(2, '0');
+                statusElement.textContent = '🎉 Birthday Celebration in Progress! 🎉';
+                statusElement.style.color = '#ff6b6b';
+
+                // Stop the countdown after 24 hours
+                if (elapsedHours >= 24) {
+                    statusElement.textContent = '🎂 Birthday Celebration Complete! 🎂';
+                    clearInterval(countdownInterval);
+                }
+            } else {
+                // Countdown to birthday
+                const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                hoursElement.textContent = hours.toString().padStart(2, '0');
+                minutesElement.textContent = minutes.toString().padStart(2, '0');
+                secondsElement.textContent = seconds.toString().padStart(2, '0');
+                statusElement.textContent = '⏰ Counting down to birthday celebration...';
+                statusElement.style.color = '#4ecdc4';
+            }
+        }
+
+        // Update immediately
+        updateCountdown();
+
+        // Update every second
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        console.log('Birthday countdown started!');
+    }
+
+    // Start the countdown
+    startBirthdayCountdown();
+
     // --- Birthday Wishes --- //
     const wishes = [
         "Wishing you a day filled with happiness and a year filled with joy.",
