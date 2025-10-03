@@ -70,22 +70,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const timeRemaining = birthday.getTime() - now.getTime();
 
             if (timeRemaining <= 0) {
-                // Birthday has started!
+                // Birthday has started! Calculate elapsed time from midnight
                 const elapsed = Math.abs(timeRemaining);
                 const elapsedHours = Math.floor(elapsed / (1000 * 60 * 60));
                 const elapsedMinutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
                 const elapsedSeconds = Math.floor((elapsed % (1000 * 60)) / 1000);
 
+                // Display elapsed time (will continue beyond 24 hours)
                 hoursElement.textContent = elapsedHours.toString().padStart(2, '0');
                 minutesElement.textContent = elapsedMinutes.toString().padStart(2, '0');
                 secondsElement.textContent = elapsedSeconds.toString().padStart(2, '0');
-                statusElement.textContent = '🎉 Birthday Celebration in Progress! 🎉';
-                statusElement.style.color = '#ff6b6b';
 
-                // Stop the countdown after 24 hours
-                if (elapsedHours >= 24) {
-                    statusElement.textContent = '🎂 Birthday Celebration Complete! 🎂';
-                    clearInterval(countdownInterval);
+                if (elapsedHours < 24) {
+                    statusElement.textContent = '🎉 Birthday Celebration in Progress! 🎉';
+                    statusElement.style.color = '#ff6b6b';
+                } else {
+                    statusElement.textContent = '🎂 Continuing Birthday Celebration! 🎂';
+                    statusElement.style.color = '#feca57';
                 }
             } else {
                 // Countdown to birthday
