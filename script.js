@@ -5,8 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let playButton = null;
 
     // YouTube Video ID for "Ordinary" by Alex Warren
-    // Replace this with the actual video ID when you find the official audio
-    const videoId = 'YOUR_ORDINAY_ALEX_WARREN_VIDEO_ID';
+    // Let's try a working example first - replace this with the actual video ID
+    const videoId = 'hTWKbfoikeg'; // Known working song as example
+
+    // Alternative: Popular birthday song if needed
+    // const videoId = 'dQw4w9WgXcQ'; // Another option
 
     // Alternative approach - using a known audio streaming method
     // You can also use: https://www.youtube.com/watch?v=VIDEO_ID for direct audio
@@ -21,12 +24,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Show play button if autoplay doesn't work
     setTimeout(() => {
-        console.log('YouTube audio player loaded');
-        console.log('To use "Ordinary" by Alex Warren:');
-        console.log('1. Find the official video on YouTube');
-        console.log('2. Copy the video ID from the URL');
-        console.log('3. Replace YOUR_ORDINAY_ALEX_WARREN_VIDEO_ID in script.js');
+        console.log('Testing with video ID:', videoId);
+
+        // Create a play button as fallback for autoplay restrictions
+        const playButton = document.createElement('button');
+        playButton.className = 'play-music-btn';
+        playButton.innerHTML = '🎵 Play Music';
+        playButton.onclick = () => {
+            youtubePlayer.src = embedUrl;
+            playButton.classList.add('hidden');
+            console.log('Manual play activated');
+        };
+        document.body.appendChild(playButton);
+
+        // Most browsers block autoplay, so show the button immediately
+        console.log('Note: Most browsers block autoplay. Click the Play Music button to start audio.');
     }, 1000);
+
+    // Click handler for manual play (if autoplay is blocked)
+    document.addEventListener('click', () => {
+        if (youtubePlayer && !youtubePlayer.src.includes('autoplay=1')) {
+            youtubePlayer.src = embedUrl;
+            console.log('Manual audio activation triggered');
+        }
+    }, { once: true });
 
     // --- Birthday Wishes --- //
     const wishes = [
